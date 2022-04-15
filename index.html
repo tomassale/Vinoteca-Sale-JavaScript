@@ -1,14 +1,341 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JavaScript</title>
-</head>
-<body>
-    <h1>Titulo 1<h1>
-    <h2>Titulo 2</h2>
-    <script src="app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Administración</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <div class="planillas">
+            <h1>Planilla de Administración<h1>
+            <div class="planilla">
+                <h2>Administración de clientes</h2>
+                <table border="1" cellspacing="4" cellpadding="10" id="tablaClientes">
+                    <tr class="tr">
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Frecuencia</th>
+                        <th>Preferencia</th>
+                    </tr>
+                    <tr>
+                        <td>Nicolas</td>
+                        <td>Doblas</td>
+                        <td>moderado</td>
+                        <td>Vinos Tintos</td>
+                    </tr>
+                    <tr>
+                        <td>Tomás</td>
+                        <td>Campos</td>
+                        <td>nula</td>
+                        <td>Vinos Blancos</td>
+                    </tr>
+                    <tr>
+                        <td>Nahuel</td>
+                        <td>Saavedra</td>
+                        <td>moderado</td>
+                        <td>Vinos Espumosos</td>
+                    </tr>
+                    <tr>
+                        <td>Nahuel</td>
+                        <td>Zambito</td>
+                        <td>frecuente</td>
+                        <td>Vinos Tintos</td>
+                    </tr>
+                    <tr>
+                        <td>Julian</td>
+                        <td>Rodriguez</td>
+                        <td>moderado</td>
+                        <td>Vinos Espumosos</td>
+                    </tr>
+                    <tr>
+                        <td>Paula</td>
+                        <td>Birocco</td>
+                        <td>nula</td>
+                        <td>Vinos Blancos</td>
+                    </tr>
+                    <tr>
+                        <td>Malena</td>
+                        <td>Gomez</td>
+                        <td>nula</td>
+                        <td>Vinos Espumosos</td>
+                    </tr>
+                    <tr>
+                        <td>Carlos</td>
+                        <td>Juarez</td>
+                        <td>frecuente</td>
+                        <td>Vinos Blancos</td>
+                    </tr>
+                    <tr>
+                        <td>Alejo</td>
+                        <td>Fernandez</td>
+                        <td>regular</td>
+                        <td>Vinos Tintos</td>
+                    </tr>
+                    <tr>
+                        <td>Tomás</td>
+                        <td>Sale</td>
+                        <td>moderado</td>
+                        <td>Vinos Espumosos</td>
+                    </tr>   
+                </table>
+                <form action="" class="formulario" id="formularioClientes">
+                    <div>
+                        <div>
+                            <label for="">Nombre</label>
+                            <input type="text" class="clientes" id="clientesN" placeholder="Agregar nombre" required>
+                        </div>
+                        <div>
+                            <label for="">Apellido</label>
+                            <input type="text" class="clientes" id="clientesA" placeholder="Agregar apellido" required>
+                        </div>
+                        <div>
+                            <label for="">Frecuencia</label>
+                            <input type="text" class="clientes" id="clientesF" placeholder="Agregar frecuencia" required>
+                        </div>
+                        <div>
+                            <label for="">Preferencia</label>
+                            <input type="text" class="clientes" id="clientesP" placeholder="Agregar preferencia" required>
+                        </div>
+                        <button class="btn" id="btnClientes">Agregar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="planilla">
+                <h2>Administración de proveedores</h2>
+                <table border="1" cellspacing="8" cellpadding="10" id="tablaProveedores">
+                    <tr class="tr">
+                        <th>Nombre</th>
+                        <th>Ubicación</th>
+                        <th>Tipo</th>
+                    </tr>
+                    <tr>
+                        <td>Salamanca S.A.</td>
+                        <td>Lanus</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Fremua S.A.</td>
+                        <td>La paz</td>
+                        <td>C</td>
+                    </tr>
+                    <tr>
+                        <td>Saavedra S.R.L.</td>
+                        <td>Belgrano</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>Fernandez S.A.</td>
+                        <td>San Bernardo</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Zuviria S.R.L.</td>
+                        <td>Caballito</td>
+                        <td>A</td>
+                    </tr>
+                    <tr>
+                        <td>Saladillo S.A.</td>
+                        <td>Ramos mejia</td>
+                        <td>C</td>
+                    </tr>
+                </table>
+                <form action="" class="formulario" id="formularioProveedores">
+                    <div>
+                        <div>
+                            <label for="">Nombre</label>
+                            <input type="text" class="proveedores" id="proveedoresN" placeholder="Agregar nombre" required>
+                        </div>
+                        <div>
+                            <label for="">Ubicación</label>
+                            <input type="text" class="proveedores" id="proveedoresU" placeholder="Agregar ubicación" required>
+                        </div>
+                        <div>
+                            <label for="">Tipo</label>
+                            <input type="text" class="proveedores" id="proveedoresT" placeholder="Agregar tipo" required>
+                        </div>
+                        <button class="btn" id="btnProveedores">Agregar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="planilla">
+                <h2>Administración de productos</h2>
+                <h3>Vinos Blancos</h3>
+                <table border="1" cellspacing="8" cellpadding="10" id="tablaProductosB">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                    <tr>
+                        <td>Dulce Dilema</td>
+                        <td>3100</td>
+                        <td>214</td>
+                    </tr>
+                    <tr>
+                        <td>Putruele Tardío De Abril</td>
+                        <td>1500</td>
+                        <td>230</td>
+                    </tr>
+                </table>
+                <form action="" class="formulario" id="formularioProductosB">
+                    <div>
+                        <div>
+                            <label for="">Nombre</label>
+                            <input type="text" id="productosNVB" class="productosN" placeholder="Agregar nombre" required>
+                        </div>
+                        <div>
+                            <label for="">Precio</label>
+                            <input type="text" id="productosPVB" class="productosP" placeholder="Agregar precio" required>
+                        </div>
+                        <div>
+                            <label for="">Stock</label>
+                            <input type="text" id="productosSVB" class="productosS" placeholder="Agregar stock" required>
+                        </div>
+                        <button class="btn" id="btnProductosB">Agregar</button>
+                    </div>
+                </form>
+                <h3>Vinos Espumosos</h3>
+                <table border="1" cellspacing="8" cellpadding="10" id="tablaProductosE">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                    <tr>
+                        <td>Champagne Baron B Extra Brut</td>
+                        <td>7000</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Espumante Freixenet Italian Rose Sparkling</td>
+                        <td>4000</td>
+                        <td>20</td>
+                    </tr>
+                    <tr>
+                        <td>Champagne Brut Ros</td>
+                        <td>5000</td>
+                        <td>40</td>
+                    </tr>
+                </table>
+                <form action="" class="formulario" id="formularioProductosE">
+                    <div>
+                        <div>
+                            <label for="">Nombre</label>
+                            <input type="text" id="productosNVE" class="productosN" placeholder="Agregar nombre" required>
+                        </div>
+                        <div>
+                            <label for="">Precio</label>
+                            <input type="text" id="productosPVE" class="productosP" class="productosP" placeholder="Agregar precio" required>
+                        </div>
+                        <div>
+                            <label for="">Stock</label>
+                            <input type="text" id="productosSVE" class="productosS" class="productosS" placeholder="Agregar stock" required>
+                        </div>
+                        <button class="btn" id="btnProductosE">Agregar</button>
+                    </div>
+                </form>
+                <h3>Vinos Tintos</h3>
+                <table border="1" cellspacing="8" cellpadding="10" id="tablaProductosT">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                    <tr>
+                        <td>Salientein</td>
+                        <td>2100</td>
+                        <td>250</td>
+                    </tr>
+                    <tr>
+                        <td>Marío Blanco</td>
+                        <td>2100</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Rutini Vin Doux Naturel</td>
+                        <td>1400</td>
+                        <td>70</td>
+                    </tr>
+                    <tr>
+                        <td>Norton Rosado Malbec</td>
+                        <td>1600</td>
+                        <td>50</td>
+                    </tr>
+                    <tr>
+                        <td>Dada 7 Finca Las Moras</td>
+                        <td>1700</td>
+                        <td>40</td>
+                    </tr>
+                    <tr>
+                        <td>Lambrusco Rosso Amabile</td>
+                        <td>1900</td>
+                        <td>54</td>
+                    </tr>
+                    <tr>
+                        <td>Don Valentin</td>
+                        <td>4000</td>
+                        <td>54</td>
+                    </tr>
+                    <tr>
+                        <td>San Huberto</td>
+                        <td>1190</td>
+                        <td>51</td>
+                    </tr>
+                    <tr>
+                        <td>El enemigo</td>
+                        <td>3500</td>
+                        <td>35</td>
+                    </tr>
+                    <tr>
+                        <td>Rutini</td>
+                        <td>2100</td>
+                        <td>57</td>
+                    </tr>
+                    <tr>
+                        <td>Nicasia</td>
+                        <td>600</td>
+                        <td>59</td>
+                    </tr>
+                    <tr>
+                        <td>Animal</td>
+                        <td>1700</td>
+                        <td>45</td>
+                    </tr>
+                    <tr>
+                        <td>Tukma</td>
+                        <td>1000</td>
+                        <td>104</td>
+                    </tr>
+                    <tr>
+                        <td>Malbec</td>
+                        <td>800</td>
+                        <td>54</td>
+                    </tr>
+                </table>
+                <form action="" class="formulario" id="formularioProductosT">
+                    <div>
+                        <div>
+                            <label for="">Nombre</label>
+                            <input type="text" id="productosNVT" class="productosN" placeholder="Agregar nombre" required>
+                        </div>
+                        <div>
+                            <label for="">Precio</label>
+                            <input type="text" id="productosPVT" class="productosP" placeholder="Agregar precio" required>
+                        </div>
+                        <div>
+                            <label for="">Stock</label>
+                            <input type="text" id="productosSVT" class="productosS" placeholder="Agregar stock" required>
+                        </div>
+                        <button class="btn" id="btnProductosT">Agregar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="app.js"></script>
+    </body>
 </html>
