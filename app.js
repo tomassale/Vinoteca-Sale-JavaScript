@@ -1,3 +1,31 @@
+//array
+const vinosTintos = [
+    "Malbec",
+    "Tukma",
+    "Animal",
+    "Nicasia",
+    "Rutini", 
+    "El enemigo", 
+    "San Huberto", 
+    "Don Valentin",
+    ]
+const vinosEspumosos = [
+    "Champagne Brut Ros",
+    "Espumante Freixenet Italian Rose Sparkling",
+    "Champagne Baron B Extra Brut",
+    "Lambrusco Rosso Amabile",
+    "Dada 7 Finca Las Moras",
+    ]
+const vinosDulces = [
+    "Norton Rosado Malbec",
+    "Rutini Vin Doux Naturel",
+    "Putruele Tardío De Abril",
+    "Dulce Dilema",
+    "Marío Blanco",
+    "Salientein",
+    ]
+
+//pregunta de busqueda
 const pregunta = () =>{
     let preguntar = prompt("¿Que estas buscando?")
     switch(preguntar){
@@ -15,6 +43,7 @@ const pregunta = () =>{
             break
     }
 }
+//filtro de productos
 const mostrarLista = () => {
     let buscarLista = prompt("¿Que lista desea buscar?");
     switch(buscarLista){
@@ -34,6 +63,7 @@ const mostrarLista = () => {
             alert("No se escuentra la lista que busca");
     }
 }
+//orden de vinos blancos por precio
 const ordenarB = () =>{
     vinosBlancos.sort((a,b) => {
         if (a.Productos > b.precio){
@@ -47,6 +77,7 @@ const ordenarB = () =>{
         }
     })
 }
+//orden de vinos espumosos por precio
 const ordenarE = () =>{
     vinosEspumosos.sort((a,b) => {
         if (a.Productos > b.precio){
@@ -60,6 +91,7 @@ const ordenarE = () =>{
         }
     })
 }
+//orden de vinos tintos por precio
 const ordenarT = () =>{
     vinosTintos.sort((a,b) => {
         if (a.Productos > b.precio){
