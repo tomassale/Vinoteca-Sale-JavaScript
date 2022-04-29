@@ -12,34 +12,42 @@ a {
 
 .planillas {
   text-align: center;
+  margin-bottom: 70px;
 }
+
 .planillas .planilla {
   margin-top: 70px;
 }
+
 .planillas h1 {
   margin-top: 20px;
   font-size: 50px;
 }
+
 .planillas div h2 {
   text-decoration: dotted underline black;
   margin-bottom: 40px;
   font-size: 40px;
 }
+
 .planillas div h3 {
   text-decoration: dotted underline #ff0101;
   margin-bottom: 55px;
   margin-top: 20px;
   font-size: 35px;
 }
+
 .planillas div table {
   margin: auto;
   font-size: 25px;
   border: black;
   background-color: beige;
 }
+
 .planillas div table th {
   background-color: #f8d49e;
 }
+
 .planillas div table td {
   background-color: blanchedalmond;
 }
@@ -51,6 +59,7 @@ a {
   margin: auto;
   margin-top: 5px;
 }
+
 .formulario div div input {
   height: 30px;
   width: 200px;
@@ -58,10 +67,12 @@ a {
   font-size: 20px;
   background-color: antiquewhite;
 }
+
 .formulario div div label {
   font-size: 27px;
   color: #f8a62c;
 }
+
 .formulario div .btn {
   height: 30px;
   width: 204px;
@@ -69,8 +80,5 @@ a {
   background-color: blanchedalmond;
   font-size: 18px;
 }
-
-/*# sourceMappingURL=styles.css.map */
-/*# sourceMappingURL=styles.scss.map */
 
 /*# sourceMappingURL=style.css.map */

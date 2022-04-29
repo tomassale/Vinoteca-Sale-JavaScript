@@ -1,29 +1,64 @@
-//array
-const vinosTintos = [
-    "Malbec",
-    "Tukma",
-    "Animal",
-    "Nicasia",
-    "Rutini", 
-    "El enemigo", 
-    "San Huberto", 
-    "Don Valentin",
-    ]
-const vinosEspumosos = [
-    "Champagne Brut Ros",
-    "Espumante Freixenet Italian Rose Sparkling",
-    "Champagne Baron B Extra Brut",
-    "Lambrusco Rosso Amabile",
-    "Dada 7 Finca Las Moras",
-    ]
-const vinosDulces = [
-    "Norton Rosado Malbec",
-    "Rutini Vin Doux Naturel",
-    "Putruele Tardío De Abril",
-    "Dulce Dilema",
-    "Marío Blanco",
-    "Salientein",
-    ]
+//constructor
+class Proveedores{
+    constructor(nombre, ubicacion, tipo){
+        this.nombre = nombre;
+        this.ubicacion = ubicacion;
+        this.tipo = tipo;
+    }
+}
+class Productos{
+    constructor(nombre, precio, stock){
+        this.nombre = nombre;
+        this.precio = precio;
+        this.stock = stock;
+    }
+}
+class Clientes{
+    constructor(nombre, apellido, frecuencia, preferencia){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.frecuencia = frecuencia;
+        this.preferencia = preferencia; 
+    }
+}
+//arrays
+const mostrarProveedor = []
+const mostrarClientes = []
+const vinosBlancos = []
+const vinosEspumosos = []
+const vinosTintos = []
+
+//agregar clientes
+mostrarClientes.push(new Clientes("Nicolas", "Doblas", "moderado", "Vinos Tintos"))
+mostrarClientes.push(new Clientes("Tomás", "Campos", "nula", "Vinos Blancos"))
+mostrarClientes.push(new Clientes("Nahuel", "Saavedra", "moderado", "Vinos Espumosos"))
+mostrarClientes.push(new Clientes("Nahuel", "Zambito", "frecuente", "Vinos Tintos"))
+mostrarClientes.push(new Clientes("Julian", "Rodriguez", "moderado", "Vinos Espumosos"))
+mostrarClientes.push(new Clientes("Paula", "Birocco", "nula", "Vinos Blancos"))
+mostrarClientes.push(new Clientes("Malena", "Gomez", "nula", "Vinos Espumosos"))
+mostrarClientes.push(new Clientes("Carlos", "Juarez", "frecuente", "Vinos Blancos"))
+mostrarClientes.push(new Clientes("Alejo", "Fernandez", "regular", "Vinos Tintos"))
+mostrarClientes.push(new Clientes("Tomás", "Sale", "moderado", "Vinos Espumosos"))
+//agregar proveedores
+mostrarProveedor.push(new Proveedores("Salamanca S.A.", "Lanus", "A"))
+mostrarProveedor.push(new Proveedores("Fremua S.A.", "La paz", "C"))
+mostrarProveedor.push(new Proveedores('Saavedra S.R.L.', "Belgrano", "B"))
+mostrarProveedor.push(new Proveedores("Fernandez S.A.", "San Bernardo", "A"))
+mostrarProveedor.push(new Proveedores("Zuviria S.R.L.", "Caballito", "A"))
+mostrarProveedor.push(new Proveedores("Saladillo S.A.", "Ramos Mejia", "C"))
+//agregar productos
+vinosBlancos.push(new Productos("Dulce Dilema", 3100, 214))
+vinosBlancos.push(new Productos("Putruele Tardío De Abril", 1500, 230))
+vinosEspumosos.push(new Productos("Champagne Baron B Extra Brut", 7000, 40))
+vinosEspumosos.push(new Productos("Espumante Freixenet Italian Rose Sparkling", 4000, 20))
+vinosEspumosos.push(new Productos("Champagne Brut Ros", 5000, 40))
+vinosTintos.push(new Productos("Salientein", 2100, 250))
+vinosTintos.push(new Productos("Marío Blanco", 2100, 100))
+vinosTintos.push(new Productos("Rutini Vin Doux Naturel", 1400, 70))
+vinosTintos.push(new Productos("Norton Rosado Malbec", 1600, 50))
+vinosTintos.push(new Productos("Dada 7 Finca Las Moras", 1700, 40))
+vinosTintos.push(new Productos("Lambrusco Rosso Amabile", 1900, 54))
+vinosTintos.push(new Productos("Don Valentin", 4000, 26))
 
 //pregunta de busqueda
 const pregunta = () =>{
