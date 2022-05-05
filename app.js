@@ -30,6 +30,7 @@ const vinosTintos = []
 
 //agregar clientes
 mostrarClientes.push(new Clientes("Nicolas", "Doblas", "moderado", "Vinos Tintos"))
+mostrarClientes.push(new Clientes("Juan", "Perez", "frecuente", "Vinos Blancos"))
 mostrarClientes.push(new Clientes("Tomás", "Campos", "nula", "Vinos Blancos"))
 mostrarClientes.push(new Clientes("Nahuel", "Saavedra", "moderado", "Vinos Espumosos"))
 mostrarClientes.push(new Clientes("Nahuel", "Zambito", "frecuente", "Vinos Tintos"))
@@ -141,3 +142,69 @@ const ordenarT = () =>{
     })
 }
 pregunta()
+
+//Agregar valores a la tabla de clientes
+document.querySelector("#btnClientes").addEventListener("click", (e) => {
+    e.preventDefault()
+    document.querySelector("#tablaClientes").innerHTML += `
+    <tr>
+        <td>${clientesN.value}</td>
+        <td>${clientesA.value}</td>
+        <td>${clientesF.value}</td>
+        <td>${clientesP.value}</td>
+    </tr>
+    `
+    document.querySelector("#formularioClientes").reset()
+})
+
+//Agregar valores a la tabla de proveedores
+document.querySelector("#btnProveedores").addEventListener("click", (e) => {
+    e.preventDefault()
+    document.querySelector("#tablaProveedores").innerHTML += `
+    <tr>
+        <td>${proveedoresN.value}</td>
+        <td>${proveedoresU.value}</td>
+        <td>${proveedoresT.value}</td>
+    </tr>
+    `
+    document.querySelector("#formularioProveedores").reset()
+})
+
+//Agregar valores a la tabla de vinos tintos
+document.querySelector("#btnProductosB").addEventListener("click", (e) => {
+    e.preventDefault()
+    document.querySelector("#tablaProductosB").innerHTML += `
+    <tr>
+        <td>${productosNB.value}</td>
+        <td>${productosPB.value}</td>
+        <td>${productosSB.value}</td>
+    </tr>
+    `
+    document.querySelector("#formularioProductosB").reset()
+})
+
+//Agregar valores a la tabla de vinos espumosos
+document.querySelector("#btnProductosE").addEventListener("click", (e) => {
+    e.preventDefault()
+    document.querySelector("#tablaProductosE").innerHTML += `
+    <tr>
+        <td>${productosNE.value}</td>
+        <td>${productosPE.value}</td>
+        <td>${productosSE.value}</td>
+    </tr>
+    `
+    document.querySelector("#formularioProductosE").reset()
+})
+
+//Agregar valores a la tabla de vinos tintos
+document.querySelector("#btnProductosT").addEventListener("click", (e) => {
+    e.preventDefault()
+    document.querySelector("#tablaProductosT").innerHTML += `
+    <tr>
+        <td>${productosNT.value}</td>
+        <td>${productosPT.value}</td>
+        <td>${productosST.value}</td>
+    </tr>
+    `
+    document.querySelector("#formularioProductosT").reset()
+})
