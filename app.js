@@ -1,4 +1,12 @@
 //constructor
+class Clientes{
+    constructor(nombre, apellido, frecuencia, preferencia){
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.frecuencia = frecuencia;
+        this.preferencia = preferencia; 
+    }
+}
 class Proveedores{
     constructor(nombre, ubicacion, tipo){
         this.nombre = nombre;
@@ -13,138 +21,70 @@ class Productos{
         this.stock = stock;
     }
 }
-class Clientes{
-    constructor(nombre, apellido, frecuencia, preferencia){
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.frecuencia = frecuencia;
-        this.preferencia = preferencia; 
-    }
-}
-//arrays
-const mostrarProveedor = []
-const mostrarClientes = []
-const vinosBlancos = []
-const vinosEspumosos = []
-const vinosTintos = []
 
-//agregar clientes
-mostrarClientes.push(new Clientes("Nicolas", "Doblas", "moderado", "Vinos Tintos"))
-mostrarClientes.push(new Clientes("Juan", "Perez", "frecuente", "Vinos Blancos"))
-mostrarClientes.push(new Clientes("Tomás", "Campos", "nula", "Vinos Blancos"))
-mostrarClientes.push(new Clientes("Nahuel", "Saavedra", "moderado", "Vinos Espumosos"))
-mostrarClientes.push(new Clientes("Nahuel", "Zambito", "frecuente", "Vinos Tintos"))
-mostrarClientes.push(new Clientes("Julian", "Rodriguez", "moderado", "Vinos Espumosos"))
-mostrarClientes.push(new Clientes("Paula", "Birocco", "nula", "Vinos Blancos"))
-mostrarClientes.push(new Clientes("Malena", "Gomez", "nula", "Vinos Espumosos"))
-mostrarClientes.push(new Clientes("Carlos", "Juarez", "frecuente", "Vinos Blancos"))
-mostrarClientes.push(new Clientes("Alejo", "Fernandez", "regular", "Vinos Tintos"))
-mostrarClientes.push(new Clientes("Tomás", "Sale", "moderado", "Vinos Espumosos"))
-//agregar proveedores
-mostrarProveedor.push(new Proveedores("Salamanca S.A.", "Lanus", "A"))
-mostrarProveedor.push(new Proveedores("Fremua S.A.", "La paz", "C"))
-mostrarProveedor.push(new Proveedores('Saavedra S.R.L.', "Belgrano", "B"))
-mostrarProveedor.push(new Proveedores("Fernandez S.A.", "San Bernardo", "A"))
-mostrarProveedor.push(new Proveedores("Zuviria S.R.L.", "Caballito", "A"))
-mostrarProveedor.push(new Proveedores("Saladillo S.A.", "Ramos Mejia", "C"))
-//agregar productos
+//arrays
+let clientes = []
+let proveedores = []
+let vinosBlancos = []
+let vinosEspumosos = []
+let vinosTintos = []
+
+//pushear clientes
+clientes.push(new Clientes("Nahuel", "Zambito", "frecuente", "Vinos Tintos"))
+clientes.push(new Clientes("Julian", "Rodriguez", "moderado", "Vinos Espumosos"))
+clientes.push(new Clientes("Paula", "Birocco", "nula", "Vinos Blancos"))
+clientes.push(new Clientes("Malena", "Gomez", "nula", "Vinos Espumosos"))
+clientes.push(new Clientes("Carlos", "Juarez", "frecuente", "Vinos Blancos"))
+clientes.push(new Clientes("Alejo", "Fernandez", "regular", "Vinos Tintos"))
+clientes.push(new Clientes("Tomás", "Sale", "moderado", "Vinos Espumosos"))
+//pushear proveedores
+proveedores.push(new Proveedores("Salamanca S.A.", "Lanus", "A"))
+proveedores.push(new Proveedores("Fremua S.A.", "La paz", "C"))
+proveedores.push(new Proveedores('Saavedra S.R.L.', "Belgrano", "B"))
+proveedores.push(new Proveedores("Fernandez S.A.", "San Bernardo", "A"))
+proveedores.push(new Proveedores("Zuviria S.R.L.", "Caballito", "A"))
+proveedores.push(new Proveedores("Saladillo S.A.", "Ramos Mejia", "C"))
+//pushear productos
 vinosBlancos.push(new Productos("Dulce Dilema", 3100, 214))
 vinosBlancos.push(new Productos("Putruele Tardío De Abril", 1500, 230))
 vinosEspumosos.push(new Productos("Champagne Baron B Extra Brut", 7000, 40))
 vinosEspumosos.push(new Productos("Espumante Freixenet Italian Rose Sparkling", 4000, 20))
 vinosEspumosos.push(new Productos("Champagne Brut Ros", 5000, 40))
-vinosTintos.push(new Productos("Salientein", 2100, 250))
-vinosTintos.push(new Productos("Marío Blanco", 2100, 100))
 vinosTintos.push(new Productos("Rutini Vin Doux Naturel", 1400, 70))
 vinosTintos.push(new Productos("Norton Rosado Malbec", 1600, 50))
 vinosTintos.push(new Productos("Dada 7 Finca Las Moras", 1700, 40))
 vinosTintos.push(new Productos("Lambrusco Rosso Amabile", 1900, 54))
 vinosTintos.push(new Productos("Don Valentin", 4000, 26))
 
-//pregunta de busqueda
-const pregunta = () =>{
-    let preguntar = prompt("¿Que estas buscando?")
-    switch(preguntar){
-        case "productos":
-            mostrarLista();
-            break
-        case "proveedores":
-            console.log(mostrarProveedor);
-            break
-        case "clientes":
-            console.log(mostrarClientes);
-            break
-        default:
-            alert("No se encuentra lo que busca")
-            break
-    }
+//creador de array en localStorage
+if(localStorage.getItem('Clientes')){
+    clientes = JSON.parse(localStorage.getItem('Clientes'))
+}else{
+    localStorage.setItem("Clientes", JSON.stringify(clientes))
 }
-//filtro de productos
-const mostrarLista = () => {
-    let buscarLista = prompt("¿Que lista desea buscar?");
-    switch(buscarLista){
-        case "vinos tintos":
-            console.log(vinosTintos);
-            ordenarT();
-            break
-        case "vinos espumosos":
-            console.log(vinosEspumosos);
-            ordenarE();
-            break
-        case "vinos blancos":
-            console.log(vinosBlancos);
-            ordenarB();
-            break
-        default:
-            alert("No se escuentra la lista que busca");
-    }
+if(localStorage.getItem('Proveedores')){
+    proveedores = JSON.parse(localStorage.getItem('Proveedores'))
+}else{
+    localStorage.setItem("Proveedores", JSON.stringify(proveedores))
 }
-//orden de vinos blancos por precio
-const ordenarB = () =>{
-    vinosBlancos.sort((a,b) => {
-        if (a.Productos > b.precio){
-            return 1
-        }
-        else if (a.precio < b.precio) {
-            return -1
-        }
-        else{
-            return 0
-        }
-    })
+if(localStorage.getItem('Vinos Blancos')){
+    vinosBlancos = JSON.parse(localStorage.getItem('Vinos Blancos'))
+}else{
+    localStorage.setItem("Vinos Blancos", JSON.stringify(vinosBlancos))
 }
-//orden de vinos espumosos por precio
-const ordenarE = () =>{
-    vinosEspumosos.sort((a,b) => {
-        if (a.Productos > b.precio){
-            return 1
-        }
-        else if (a.precio < b.precio) {
-            return -1
-        }
-        else{
-            return 0
-        }
-    })
+if(localStorage.getItem('Vinos Espumosos')){
+    vinosEspumosos = JSON.parse(localStorage.getItem('Vinos Espumosos'))
+}else{
+    localStorage.setItem("Vinos Espumosos", JSON.stringify(vinosEspumosos))
 }
-//orden de vinos tintos por precio
-const ordenarT = () =>{
-    vinosTintos.sort((a,b) => {
-        if (a.Productos > b.precio){
-            return 1
-        }
-        else if (a.precio < b.precio) {
-            return -1
-        }
-        else{
-            return 0
-        }
-    })
+if(localStorage.getItem('Vinos Tintos')){
+    vinosTintos = JSON.parse(localStorage.getItem('Vinos Tintos'))
+}else{
+    localStorage.setItem("Vinos Tintos", JSON.stringify(vinosTintos))
 }
-pregunta()
 
 //Agregar valores a la tabla de clientes
-document.querySelector("#btnClientes").addEventListener("click", (e) => {
+document.querySelector("#formularioClientes").addEventListener("submit", (e) => {
     e.preventDefault()
     document.querySelector("#tablaClientes").innerHTML += `
     <tr>
@@ -154,11 +94,12 @@ document.querySelector("#btnClientes").addEventListener("click", (e) => {
         <td>${clientesP.value}</td>
     </tr>
     `
+    clientes.push(new Clientes(clientesN.value, clientesA.value, clientesF.value, clientesP.value))
+    localStorage.setItem("Clientes", JSON.stringify(clientes))
     document.querySelector("#formularioClientes").reset()
 })
-
 //Agregar valores a la tabla de proveedores
-document.querySelector("#btnProveedores").addEventListener("click", (e) => {
+document.querySelector("#formularioProveedores").addEventListener("submit", (e) => {
     e.preventDefault()
     document.querySelector("#tablaProveedores").innerHTML += `
     <tr>
@@ -167,11 +108,12 @@ document.querySelector("#btnProveedores").addEventListener("click", (e) => {
         <td>${proveedoresT.value}</td>
     </tr>
     `
+    proveedores.push(new Proveedores(proveedoresN.value, proveedoresU.value, proveedoresT.value))
+    localStorage.setItem("Proveedores", JSON.stringify(proveedores))
     document.querySelector("#formularioProveedores").reset()
 })
-
-//Agregar valores a la tabla de vinos tintos
-document.querySelector("#btnProductosB").addEventListener("click", (e) => {
+//Agregar valores a la tabla de vinos blancos
+document.querySelector("#formularioProductosB").addEventListener("submit", (e) => {
     e.preventDefault()
     document.querySelector("#tablaProductosB").innerHTML += `
     <tr>
@@ -180,11 +122,12 @@ document.querySelector("#btnProductosB").addEventListener("click", (e) => {
         <td>${productosSB.value}</td>
     </tr>
     `
+    vinosBlancos.push(new Productos(productosNB.value, productosPB.value, productosSB.value))
+    localStorage.setItem("Vinos Blancos", JSON.stringify(vinosBlancos))
     document.querySelector("#formularioProductosB").reset()
 })
-
 //Agregar valores a la tabla de vinos espumosos
-document.querySelector("#btnProductosE").addEventListener("click", (e) => {
+document.querySelector("#formularioProductosE").addEventListener("submit", (e) => {
     e.preventDefault()
     document.querySelector("#tablaProductosE").innerHTML += `
     <tr>
@@ -193,11 +136,11 @@ document.querySelector("#btnProductosE").addEventListener("click", (e) => {
         <td>${productosSE.value}</td>
     </tr>
     `
+    localStorage.setItem("Vinos Espumosos", JSON.stringify(vinosEspumosos))
     document.querySelector("#formularioProductosE").reset()
 })
-
 //Agregar valores a la tabla de vinos tintos
-document.querySelector("#btnProductosT").addEventListener("click", (e) => {
+document.querySelector("#formularioProductosT").addEventListener("submit", (e) => {
     e.preventDefault()
     document.querySelector("#tablaProductosT").innerHTML += `
     <tr>
@@ -206,5 +149,58 @@ document.querySelector("#btnProductosT").addEventListener("click", (e) => {
         <td>${productosST.value}</td>
     </tr>
     `
+    localStorage.setItem("Vinos Tintos", JSON.stringify(vinosTintos));
     document.querySelector("#formularioProductosT").reset()
+})
+
+//Agregar valores del localStorage a la tabla de clientes
+JSON.parse(localStorage.getItem("Clientes")).forEach(cliente => {
+    document.querySelector('#tablaClientes').innerHTML += `
+    <tr>
+        <td>${cliente.nombre}</td>
+        <td>${cliente.apellido}</td>
+        <td>${cliente.frecuencia}</td>
+        <td>${cliente.preferencia}</td>
+    </tr>
+    `
+})
+//Agregar valores del localStorage a la tabla de proveedores
+JSON.parse(localStorage.getItem("Proveedores")).forEach(proveedor => {
+    document.querySelector('#tablaProveedores').innerHTML += `
+    <tr>
+        <td>${proveedor.nombre}</td>
+        <td>${proveedor.ubicacion}</td>
+        <td>${proveedor.tipo}</td>
+    </tr>
+    `
+})
+//Agregar valores del localStorage a la tabla de vinos blancos
+JSON.parse(localStorage.getItem("Vinos Blancos")).forEach(vinoB => {
+    document.querySelector('#tablaProductosB').innerHTML += `
+    <tr>
+        <td>${vinoB.nombre}</td>
+        <td>${vinoB.precio}</td>
+        <td>${vinoB.stock}</td>
+    </tr>
+    `
+})
+//Agregar valores del localStorage a la tabla de vinos espumosos
+JSON.parse(localStorage.getItem("Vinos Espumosos")).forEach(vinoE => {
+    document.querySelector('#tablaProductosE').innerHTML += `
+    <tr>
+        <td>${vinoE.nombre}</td>
+        <td>${vinoE.precio}</td>
+        <td>${vinoE.stock}</td>
+    </tr>
+    `
+})
+//Agregar valores del localStorage a la tabla de vinos tintos
+JSON.parse(localStorage.getItem("Vinos Tintos")).forEach(vinoT => {
+    document.querySelector('#tablaProductosT').innerHTML += `
+    <tr>
+        <td>${vinoT.nombre}</td>
+        <td>${vinoT.precio}</td>
+        <td>${vinoT.stock}</td>
+    </tr>
+    `
 })
