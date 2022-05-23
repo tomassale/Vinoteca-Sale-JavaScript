@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     </head>
     <body>
         <div class="planillas">
@@ -23,14 +24,7 @@
             </div>
             <div class="planilla">
                 <h2>Administración de clientes</h2>
-                <table border="1" cellspacing="8" cellpadding="10" id="tablaClientes" class='tabla'>
-                    <tr class="tr">
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Frecuencia</th>
-                        <th>Preferencia</th>
-                    </tr>
-                </table>
+                <div id='ternarioClientes'></div>
                 <form action="" id="formularioClientes" class="formulario" >
                     <div>
                         <div>
@@ -55,13 +49,13 @@
             </div>
             <div class="planilla">
                 <h2>Administración de proveedores</h2>
-                <table border="1" cellspacing="8" cellpadding="10" id="tablaProveedores" class='tabla'>
-                    <tr class="tr">
-                        <th>Nombre</th>
-                        <th>Ubicación</th>
-                        <th>Tipo</th>
-                    </tr>
-                </table>
+                    <table border="1" cellspacing="8" cellpadding="10" id="tablaProveedores" class='tabla'>
+                        <tr class="tr">
+                            <th>Nombre</th>
+                            <th>Ubicación</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </table>
                 <form action="" class="formulario" id="formularioProveedores">
                     <div>
                         <div>
@@ -159,6 +153,7 @@
                 </form>
             </div>
         </div>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script src="../app.js"></script>
     </body>
 </html>
