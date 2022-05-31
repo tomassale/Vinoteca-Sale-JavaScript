@@ -1,159 +1,167 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang='es'>
     <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset='UTF-8'>
+        <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
         <title>Administración</title>
-        <link rel="stylesheet" href="../estilos/style.css">
-        <link rel="shortcut icon" href="../estilos/iconos/wine-glasses.png" type="image/x-icon">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+        <link rel='stylesheet' href='../estilos/style.css'>
+        <link rel='shortcut icon' href='../estilos/iconos/wine-glasses.png' type='image/x-icon'>
+        <link rel='preconnect' href='https://fonts.googleapis.com'>
+        <link rel='preconnect' href='https://fonts.gstatic.com' crossorigin>
+        <link href='https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@700&display=swap' rel='stylesheet'>
+        <link rel='stylesheet' type='text/css' href='https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css'>
     </head>
     <body>
-        <div class="planillas">
+        <div class='planillas'>
             <h1>Planilla de Administración<h1>
-            <div class="buscador">
+            <div id='clima'></div>
+            <div class='buscador'>
                 <h3>¿Que estas buscando?</h3>
-                <div class="contenedorBuscador">
-                    <input type="text" id="buscador" placeholder="Buscar">
-                    <button id="btnBuscador">🔍</button>
+                <div class='contenedorBuscador'>
+                    <input type='text' id='buscador' placeholder='Buscar'>
+                    <button id='btnBuscador'>🔍</button>
                 </div>
             </div>
-            <div class="planilla">
+            <div class='planilla'>
                 <h2>Administración de clientes</h2>
-                <div id='ternarioClientes'></div>
-                <form action="" id="formularioClientes" class="formulario" >
+                <table border='1' cellspacing='8' cellpadding='10' id='tablaClientes' class='tabla'>
+                    <tr class='tr'>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Frecuencia</th>
+                        <th>Preferencia</th>
+                    </tr>
+                </table>
+                <form action='' id='formularioClientes' class='formulario' >
                     <div>
                         <div>
-                            <label for="clientesN">Nombre</label>
-                            <input type="text" id="clientesN" placeholder="Agregar nombre" required>
+                            <label for='clientesN'>Nombre</label>
+                            <input type='text' id='clientesN' placeholder='Agregar nombre' required>
                         </div>
                         <div>
-                            <label for="clientesA">Apellido</label>
-                            <input type="text" id="clientesA" placeholder="Agregar apellido" required>
+                            <label for='clientesA'>Apellido</label>
+                            <input type='text' id='clientesA' placeholder='Agregar apellido' required>
                         </div>
                         <div>
-                            <label for="clientesF">Frecuencia</label>
-                            <input type="text" id="clientesF" placeholder="Agregar frecuencia" required>
+                            <label for='clientesF'>Frecuencia</label>
+                            <input type='text' id='clientesF' placeholder='Agregar frecuencia' required>
                         </div>
                         <div>
-                            <label for="clientesP">Preferencia</label>
-                            <input type="text" id="clientesP" placeholder="Agregar preferencia" required>
+                            <label for='clientesP'>Preferencia</label>
+                            <input type='text' id='clientesP' placeholder='Agregar preferencia' required>
                         </div>
-                        <button type="submit" class="btn" id="btnClientes">Agregar</button>
+                        <button type='submit' class='btn' id='btnClientes'>Agregar</button>
                     </div>
                 </form>
             </div>
-            <div class="planilla">
+            <div class='planilla'>
                 <h2>Administración de proveedores</h2>
-                    <table border="1" cellspacing="8" cellpadding="10" id="tablaProveedores" class='tabla'>
-                        <tr class="tr">
+                    <table border='1' cellspacing='8' cellpadding='10' id='tablaProveedores' class='tabla'>
+                        <tr class='tr'>
                             <th>Nombre</th>
                             <th>Ubicación</th>
                             <th>Tipo</th>
                         </tr>
                     </table>
-                <form action="" class="formulario" id="formularioProveedores">
+                <form action='' class='formulario' id='formularioProveedores'>
                     <div>
                         <div>
-                            <label for="proveedoresN">Nombre</label>
-                            <input type="text" id="proveedoresN" class="proveedores" placeholder="Agregar nombre" required>
+                            <label for='proveedoresN'>Nombre</label>
+                            <input type='text' id='proveedoresN' class='proveedores' placeholder='Agregar nombre' required>
                         </div>
                         <div>
-                            <label for="proveedoresU">Ubicación</label>
-                            <input type="text" id="proveedoresU" class="proveedores" placeholder="Agregar ubicación" required>
+                            <label for='proveedoresU'>Ubicación</label>
+                            <input type='text' id='proveedoresU' class='proveedores' placeholder='Agregar ubicación' required>
                         </div>
                         <div>
-                            <label for="proveedoresT">Tipo</label>
-                            <input type="text" id="proveedoresT" class="proveedores" placeholder="Agregar tipo" required>
+                            <label for='proveedoresT'>Tipo</label>
+                            <input type='text' id='proveedoresT' class='proveedores' placeholder='Agregar tipo' required>
                         </div>
-                        <button type="submit" class="btn" id="btnProveedores">Agregar</button>
+                        <button type='submit' class='btn' id='btnProveedores'>Agregar</button>
                     </div>
                 </form>
             </div>
-            <div class="planilla">
+            <div class='planilla'>
                 <h2>Administración de productos</h2>
                 <h3>Vinos Blancos</h3>
-                <table border="1" cellspacing="8" cellpadding="10" id="tablaProductosB" class='tabla'>
+                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosB' class='tabla'>
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Stock</th>
                     </tr>
                 </table>
-                <form action="" class="formulario" id="formularioProductosB">
+                <form action='' class='formulario' id='formularioProductosB'>
                     <div>
                         <div>
-                            <label for="productosNB">Nombre</label>
-                            <input type="text" id="productosNB" class="productosN" placeholder="Agregar nombre" required>
+                            <label for='productosNB'>Nombre</label>
+                            <input type='text' id='productosNB' class='productosN' placeholder='Agregar nombre' required>
                         </div>
                         <div>
-                            <label for="productosPB">Precio</label>
-                            <input type="text" id="productosPB" class="productosP" placeholder="Agregar precio" required>
+                            <label for='productosPB'>Precio</label>
+                            <input type='text' id='productosPB' class='productosP' placeholder='Agregar precio' required>
                         </div>
                         <div>
-                            <label for="productosSB">Stock</label>
-                            <input type="text" id="productosSB" class="productosS" placeholder="Agregar stock" required>
+                            <label for='productosSB'>Stock</label>
+                            <input type='text' id='productosSB' class='productosS' placeholder='Agregar stock' required>
                         </div>
-                        <button type="submit" class="btn" id="btnProductosB">Agregar</button>
+                        <button type='submit' class='btn' id='btnProductosB'>Agregar</button>
                     </div>
                 </form>
                 <h3>Vinos Espumosos</h3>
-                <table border="1" cellspacing="8" cellpadding="10" id="tablaProductosE" class='tabla'>
+                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosE' class='tabla'>
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Stock</th>
                     </tr>
                 </table>
-                <form action="" class="formulario" id="formularioProductosE">
+                <form action='' class='formulario' id='formularioProductosE'>
                     <div>
                         <div>
-                            <label for="productosNE">Nombre</label>
-                            <input type="text" id="productosNE" class="productosN" class="productosE" placeholder="Agregar nombre" required>
+                            <label for='productosNE'>Nombre</label>
+                            <input type='text' id='productosNE' class='productosN' class='productosE' placeholder='Agregar nombre' required>
                         </div>
                         <div>
-                            <label for="productosPE">Precio</label>
-                            <input type="text" id="productosPE" class="productosP" class="productosE" placeholder="Agregar precio" required>
+                            <label for='productosPE'>Precio</label>
+                            <input type='text' id='productosPE' class='productosP' class='productosE' placeholder='Agregar precio' required>
                         </div>
                         <div>
-                            <label for="productosSE">Stock</label>
-                            <input type="text" id="productosSE" class="productosS" class="productosE" placeholder="Agregar stock" required>
+                            <label for='productosSE'>Stock</label>
+                            <input type='text' id='productosSE' class='productosS' class='productosE' placeholder='Agregar stock' required>
                         </div>
-                        <button type="submit" class="btn" id="btnProductosE">Agregar</button>
+                        <button type='submit' class='btn' id='btnProductosE'>Agregar</button>
                     </div>
                 </form>
                 <h3>Vinos Tintos</h3>
-                <table border="1" cellspacing="8" cellpadding="10" id="tablaProductosT" class='tabla'>
+                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosT' class='tabla'>
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
                         <th>Stock</th>
                     </tr>
                 </table>
-                <form action="" class="formulario" id="formularioProductosT">
+                <form action='' class='formulario' id='formularioProductosT'>
                     <div>
                         <div>
-                            <label for="productosNT">Nombre</label>
-                            <input type="text" id="productosNT" class="productosN" placeholder="Agregar nombre" required>
+                            <label for='productosNT'>Nombre</label>
+                            <input type='text' id='productosNT' class='productosN' placeholder='Agregar nombre' required>
                         </div>
                         <div>
-                            <label for="productosPT">Precio</label>
-                            <input type="text" id="productosPT" class="productosP" placeholder="Agregar precio" required>
+                            <label for='productosPT'>Precio</label>
+                            <input type='text' id='productosPT' class='productosP' placeholder='Agregar precio' required>
                         </div>
                         <div>
-                            <label for="productosST">Stock</label>
-                            <input type="text" id="productosST" class="productosS" placeholder="Agregar stock" required>
+                            <label for='productosST'>Stock</label>
+                            <input type='text' id='productosST' class='productosS' placeholder='Agregar stock' required>
                         </div>
-                        <button type="submit" class="btn" id="btnProductosT">Agregar</button>
+                        <button type='submit' class='btn' id='btnProductosT'>Agregar</button>
                     </div>
                 </form>
             </div>
         </div>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-        <script src="../app.js"></script>
+        <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/toastify-js'></script>
+        <script src='../logica/app.js'></script>
     </body>
 </html>

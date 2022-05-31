@@ -1,0 +1,30 @@
+{
+"cliente": [{"nombre":"Nahuel", "apellido":"Zambito", "frecuencia":"frecuente", "preferencia":"Vinos Tintos"},
+            {"nombre":"Julian", "apellido":"Rodriguez", "frecuencia":"moderado", "preferencia":"Vinos Espumosos"},
+            {"nombre":"Paula", "apellido":"Birocco", "frecuencia":"nula", "preferencia":"Vinos Blancos"},
+            {"nombre":"Malena", "apellido":"Gomez", "frecuencia":"nula", "preferencia":"Vinos Espumosos"},
+            {"nombre":"Carlos", "apellido":"Juarez", "frecuencia":"frecuente", "preferencia":"Vinos Blancos"},
+            {"nombre":"Alejo", "apellido":"Fernandez", "frecuencia":"regular", "preferencia":"Vinos Tintos"},
+            {"nombre":"Tomás", "apellido":"Sale", "frecuencia":"moderado", "preferencia":"Vinos Espumosos"}],
+"proveedor": [{"nombre":"Salamanca S.A.", "ubicacion":"Lanus", "tipo":"A"},
+            {"nombre":"Salamanca S.A.", "ubicacion":"Lanus", "tipo":"A"},
+            {"nombre":"Fremua S.A.", "ubicacion":"La paz", "tipo":"C"},
+            {"nombre":"Saavedra S.R.L.", "ubicacion":"Belgrano", "tipo":"B"},
+            {"nombre":"Fernandez S.A.", "ubicacion":"San Bernardo", "tipo":"A"},
+            {"nombre":"Zuviria S.R.L.", "ubicacion":"Caballito", "tipo":"A"},
+            {"nombre":"Saladillo S.A.", "ubicacion":"Ramos Mejia", "tipo":"C"}],
+"productos": [
+    {
+    "vinoTinto":[{"nombre":"Rutini Vin Doux Naturel", "precio":"1400", "stock":70},
+                {"nombre":"Rutini Vin Doux Naturel", "precio":"1400", "stock":70},
+                {"nombre":"Norton Rosado Malbec", "precio":"1600", "stock":50},
+                {"nombre":"Dada 7 Finca Las Moras", "precio":"1700", "stock":40},
+                {"nombre":"Lambrusco Rosso Amabile", "precio":"1900", "stock":54},
+                {"nombre":"Don Valentin", "precio":"4000", "stock":26}],
+    "vinoBlanco":[{"nombre":"Dulce Dilema", "precio":"3100", "stock":214},
+                {"nombre":"Putruele Tardío De Abril", "precio":"1500", "stock":230}],
+    "vinoEspumoso":[{"nombre":"Champagne Baron B Extra Brut", "precio":"7000", "stock":40},
+                {"nombre":"Espumante Freixenet Italian Rose Sparkling", "precio":"4000","stock":20},
+                {"nombre":"Champagne Brut Ros", "precio":"5000", "stock":40}]
+    }]
+}
