@@ -1,6 +1,7 @@
+//clases constructoras
 class Clientes{
     constructor(nombre, apellido, frecuencia, preferencia){
-        this.id = Math.floor(Math.random() * 1000);
+        this.id = Math.floor(Math.random() * 100000);
         this.nombre = nombre;
         this.apellido = apellido;
         this.frecuencia = frecuencia;
@@ -9,7 +10,7 @@ class Clientes{
 }
 class Proveedores{
     constructor(nombre, ubicacion, tipo){
-        this.id = Math.floor(Math.random() * 1000);
+        this.id = Math.floor(Math.random() * 100000);
         this.nombre = nombre;
         this.ubicacion = ubicacion;
         this.tipo = tipo;
@@ -17,7 +18,7 @@ class Proveedores{
 }
 class Productos{
     constructor(nombre, precio, stock){
-        this.id = Math.floor(Math.random() * 1000);
+        this.id = Math.floor(Math.random() * 100000);
         this.nombre = nombre;
         this.precio = precio;
         this.stock = stock;
@@ -29,59 +30,154 @@ let proveedores = []
 let vinosTintos = []
 let vinosBlancos = []
 let vinosEspumosos = []
+const preguntas = [
+    'Clientes',
+    'Proveedores',
+    'Vinos Tintos',
+    'Vinos Blancos',
+    'Vinos Espumosos'
+]
 
 //funcion Toastify
 const toastify = (mensaje) => {
     Toastify({
-        text: mensaje,
+        text: mensaje + ' agregado',
         duration: 2000,
         close: true,
-        gravity: 'bottom',
-        position: 'right',
+        gravity: "bottom",
+        position: "right",
         stopOnFocus: true,
         style: {
-            background: 'linear-gradient(to right, #00b09b, #96c93d)',
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
         },
     }).showToast();
 }
+
 //creador de array en localStorage
-const crearLS = (valor, array) => {
+const crearLS = (valor, _array) => {
     if(localStorage.getItem(valor)){
-        array = JSON.parse(localStorage.getItem(valor))
+        _array = JSON.parse(localStorage.getItem(valor))
     }else{
-        localStorage.setItem(valor, JSON.stringify(array))
+        localStorage.setItem(valor, JSON.stringify(_array))
     }
 }
-//funcion para traer los datos de localStorage
-// const parse = (valor, tabla, _p1, _p2, _p3, _p4) =>{
-//     JSON.parse(localStorage.getItem(valor)).forEach(object => {
-//         document.querySelector(tabla).innerHTML += `
-//         <tr>
-//             <td>${object._p1}</td>
-//             <td>${object._p2}</td>
-//             <td>${object._p3}</td>
-//             <td>${object._p4}</td>
-//         </tr>
-//         `
-//     })
-// }
+
+const buscarProductos = () =>{
+    let input = document.querySelector('#buscador')
+    let link = document.querySelector('#linkBuscador')
+    switch(input.value){
+    case 'Vinos Tintos':
+        link.setAttribute('href', '#productos')
+        break
+    case 'Vinos Blancos':
+        link.setAttribute('href', '#btnProductosT')
+        break
+    case 'Vinos Espumosos':
+        link.setAttribute('href', '#btnProductosB')
+        break
+    default:
+        link.setAttribute('href', '#')
+        document.querySelector('#dropDown').innerHTML = ''
+        break
+    }
+}
+//funcion buscadora
+const buscar = () => {
+    let input = document.querySelector('#buscador')
+    let link = document.querySelector('#linkBuscador')
+    if(input.value == 'Clientes'){
+            link.setAttribute('href', '#buscador')
+    }else if(input.value == 'Proveedores')
+            link.setAttribute('href', '#btnClientes')
+    else{
+        buscarProductos()
+    }
+    document.querySelector('#buscador').value = ''
+}
+
+const esconderDropDown = () => {
+    document.querySelector('.itemDropDown').addEventListener('click', (e) => {
+        document.querySelector('#buscador').value = e.target.innerHTML
+        document.querySelector('#dropDown').innerHTML = ''
+    })
+}
+
+const autocompletado = () => {
+    document.querySelector("#dropDown").innerHTML = ''
+    let pal = document.querySelector('#buscador').value
+    let tam = pal.length
+    for(let indice in preguntas){
+        let nombre = preguntas[indice]
+        let long = nombre.length
+        let str = nombre.substring(0,tam)
+        if(tam <= long && tam != 0){
+            if(pal.toLowerCase() == str.toLowerCase()){
+                let node = document.createElement("button")
+                node.setAttribute('class', 'itemDropDown')
+                let textnode = document.createTextNode(preguntas[indice])
+                node.appendChild(textnode)
+                document.querySelector('#dropDown').appendChild(node)
+            }
+        }
+    }
+    esconderDropDown()
+}
+
+const JSONcliente = (item, tabla) => {
+    JSON.parse(localStorage.getItem(item)).forEach(cliente => {
+        document.querySelector(tabla).innerHTML += `
+        <tr>
+            <td>${cliente.nombre}</td>
+            <td>${cliente.apellido}</td>
+            <td>${cliente.frecuencia}</td>
+            <td>${cliente.preferencia}</td>
+            <td><button class='eliminar'>X</button></td>
+        </tr>
+        `
+    })
+}
+const JSONproveedores = (item, tabla) => {
+    JSON.parse(localStorage.getItem(item)).forEach(proveedor => {
+        document.querySelector(tabla).innerHTML += `
+        <tr>
+            <td>${proveedor.nombre}</td>
+            <td>${proveedor.ubicacion}</td>
+            <td>${proveedor.tipo}</td>
+            <td><button class='eliminar'>X</button></td>
+        </tr>
+        `
+    })
+}
+const JSONproductos = (item, tabla) => {
+    JSON.parse(localStorage.getItem(item)).forEach(object => {
+        document.querySelector(tabla).innerHTML += `
+        <tr>
+            <td>${object.nombre}</td>
+            <td>${object.precio}</td>
+            <td>${object.stock}</td>
+            <td><button class='eliminar'>X</button></td>
+        </tr>
+        `
+    })
+}
 
 //fetchs parar traer APIs o json
+
 fetch('../logica/app.json')
     .then(res => res.json())
     .then(({cliente, proveedor}) => {
         cliente.forEach(object => {
             let {nombre, apellido, frecuencia, preferencia} = object
             clientes.push(new Clientes(nombre, apellido, frecuencia, preferencia))
-            localStorage.setItem('Cliente', JSON.stringify(clientes))
         })
         proveedor.forEach(object => {
             let {nombre, ubicacion, tipo} = object
             proveedores.push(new Proveedores(nombre, ubicacion, tipo))
-            localStorage.setItem('Proveedor', JSON.stringify(proveedores))
         })
+        crearLS('Cliente', clientes)
+        crearLS('Proveedor', proveedores)
     })
-fetch('https://mocki.io/v1/c1dc5706-90e8-4d64-8f41-35cbca39aeb9')
+fetch('../logica/app.json')
     .then(res => res.json())
     .then(({productos}) => {
         productos.forEach(object => {
@@ -89,20 +185,21 @@ fetch('https://mocki.io/v1/c1dc5706-90e8-4d64-8f41-35cbca39aeb9')
             vinoTinto.forEach(Tinto => {
                 let {nombre, precio, stock} = Tinto
                 vinosTintos.push(new Productos(nombre, precio, stock))
-                localStorage.setItem('Vino Tinto', JSON.stringify(vinosTintos))
             })
             vinoBlanco.forEach(Blanco => {
                 let {nombre, precio, stock} = Blanco
                 vinosBlancos.push(new Productos(nombre, precio, stock))
-                localStorage.setItem('Vino Blanco', JSON.stringify(vinosBlancos))
             })
             vinoEspumoso.forEach(Espumoso => {
                 let {nombre, precio, stock} = Espumoso
                 vinosEspumosos.push(new Productos(nombre, precio, stock))
-                localStorage.setItem('Vino Espumoso', JSON.stringify(vinosEspumosos))
             })
         })
+        crearLS('Vino Tinto', vinosTintos)
+        crearLS('Vino Blanco', vinosBlancos)
+        crearLS('Vino Espumoso', vinosEspumosos)
     })
+
 //setInterval para actualizar los datos
 setInterval(() => {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat=-34.62264&lon=-58.44104&appid=e77632dc208d5721876cd234a141d90a&lang=es')
@@ -118,27 +215,25 @@ setInterval(() => {
         })
 }, 1000)
 
-crearLS('Cliente', clientes)
-crearLS('Proveedor', proveedores)
-crearLS('Vino Blanco', vinosBlancos)
-crearLS('Vino Espumoso', vinosEspumosos)
-crearLS('Vino Tinto', vinosTintos)
+document.querySelector('#btnBuscador').addEventListener('click', buscar)
+document.querySelector('#buscador').addEventListener('keyup', autocompletado)
 
 //Agregar valores a la tabla de clientes
 document.querySelector('#formularioClientes').addEventListener('submit', (e) => {
     e.preventDefault()
     document.querySelector('#tablaClientes').innerHTML += `
     <tr>
-        <td>${clienteN.value}</td>
-        <td>${clienteA.value}</td>
-        <td>${clienteF.value}</td>
-        <td>${clienteP.value}</td>
+        <td>${clientesN.value}</td>
+        <td>${clientesA.value}</td>
+        <td>${clientesF.value}</td>
+        <td>${clientesP.value}</td>
+        <td><button class='eliminar'>X</button></td>
     </tr>
     `
     clientes.push(new Clientes(clientesN.value, clientesA.value, clientesF.value, clientesP.value))
     localStorage.setItem('Cliente', JSON.stringify(clientes))
     document.querySelector('#formularioClientes').reset()
-    toastify('Cliente agregado')
+    toastify('Cliente')
 })
 //Agregar valores a la tabla de proveedores
 document.querySelector('#formularioProveedores').addEventListener('submit', (e) => {
@@ -146,7 +241,7 @@ document.querySelector('#formularioProveedores').addEventListener('submit', (e) 
     proveedores.push(new Proveedores(proveedoresN.value, proveedoresU.value, proveedoresT.value))
     localStorage.setItem('Proveedor', JSON.stringify(proveedores))
     document.querySelector('#formularioProveedores').reset()
-    toastify('Proveedor agregado')
+    toastify('Proveedor')
 })
 //Agregar valores a la tabla de vinos blancos
 document.querySelector('#formularioProductosB').addEventListener('submit', (e) => {
@@ -154,7 +249,7 @@ document.querySelector('#formularioProductosB').addEventListener('submit', (e) =
     vinosBlancos.push(new Productos(productosNB.value, productosPB.value, productosSB.value))
     localStorage.setItem('Vino Blanco', JSON.stringify(vinosBlancos))
     document.querySelector('#formularioProductosB').reset()
-    toastify('Producto agregado')
+    toastify('Producto')
 })
 //Agregar valores a la tabla de vinos espumosos
 document.querySelector('#formularioProductosE').addEventListener('submit', (e) => {
@@ -162,68 +257,24 @@ document.querySelector('#formularioProductosE').addEventListener('submit', (e) =
     vinosEspumosos.push(new Productos(productosNE.value, productosPE.value, productosSE.value))
     localStorage.setItem('Vino Espumoso', JSON.stringify(vinosEspumosos))
     document.querySelector('#formularioProductosE').reset()
-    toastify('Producto agregado')
+    toastify('Producto')
 })
 //Agregar valores a la tabla de vinos tintos
 document.querySelector('#formularioProductosT').addEventListener('submit', (e) => {
     e.preventDefault()
     vinosTintos.push(new Productos(productosNT.value, productosPT.value, productosST.value))
     localStorage.setItem('Vino Tinto', JSON.stringify(vinosTintos));
-    document.querySelector('#formularioProductosT').reset()
-    toastify('Producto agregado')
+    reinicio('#formularioProductosT')
+    toastify('Producto')
 })
 
-//Agregar valores del localStorage a la tabla de clientes
-JSON.parse(localStorage.getItem('Cliente')).forEach(cliente => {
-    document.querySelector('#tablaClientes').innerHTML += `
-    <tr>
-        <td>${cliente.nombre}</td>
-        <td>${cliente.apellido}</td>
-        <td>${cliente.frecuencia}</td>
-        <td>${cliente.preferencia}</td>
-    </tr>
-    `
-})
-//Agregar valores del localStorage a la tabla de proveedores
-JSON.parse(localStorage.getItem('Proveedor')).forEach(proveedor => {
-    document.querySelector('#tablaProveedores').innerHTML += `
-    <tr>
-        <td>${proveedor.nombre}</td>
-        <td>${proveedor.ubicacion}</td>
-        <td>${proveedor.tipo}</td>
-    </tr>
-    `
-})
-//Agregar valores del localStorage a la tabla de vinos blancos
-JSON.parse(localStorage.getItem('Vino Blanco')).forEach(vinoB => {
-    document.querySelector('#tablaProductosB').innerHTML += `
-    <tr>
-        <td>${vinoB.nombre}</td>
-        <td>${vinoB.precio}</td>
-        <td>${vinoB.stock}</td>
-    </tr>
-    `
-})
-//Agregar valores del localStorage a la tabla de vinos espumosos
-JSON.parse(localStorage.getItem('Vino Espumoso')).forEach(vinoE => {
-    document.querySelector('#tablaProductosE').innerHTML += `
-    <tr>
-        <td>${vinoE.nombre}</td>
-        <td>${vinoE.precio}</td>
-        <td>${vinoE.stock}</td>
-    </tr>
-    `
-})
-//Agregar valores del localStorage a la tabla de vinos tintos
-JSON.parse(localStorage.getItem('Vino Tinto')).forEach(vinoT => {
-    document.querySelector('#tablaProductosT').innerHTML += `
-    <tr>
-        <td>${vinoT.nombre}</td>
-        <td>${vinoT.precio}</td>
-        <td>${vinoT.stock}</td>
-    </tr>
-    `
-})
-
-
-
+crearLS('Cliente', clientes)
+crearLS('Proveedor', proveedores)
+crearLS('Vino Blanco', vinosBlancos)
+crearLS('Vino Espumoso', vinosEspumosos)
+crearLS('Vino Tinto', vinosTintos)
+JSONcliente('Cliente', '#tablaClientes')
+JSONproveedores('Proveedor', '#tablaProveedores')
+JSONproductos('Vino Tinto', '#tablaProductosT')
+JSONproductos('Vino Blanco', '#tablaProductosB')
+JSONproductos('Vino Espumoso', '#tablaProductosE')

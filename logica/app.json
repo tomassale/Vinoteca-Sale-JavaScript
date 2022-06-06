@@ -7,7 +7,6 @@
             {"nombre":"Alejo", "apellido":"Fernandez", "frecuencia":"regular", "preferencia":"Vinos Tintos"},
             {"nombre":"Tomás", "apellido":"Sale", "frecuencia":"moderado", "preferencia":"Vinos Espumosos"}],
 "proveedor": [{"nombre":"Salamanca S.A.", "ubicacion":"Lanus", "tipo":"A"},
-            {"nombre":"Salamanca S.A.", "ubicacion":"Lanus", "tipo":"A"},
             {"nombre":"Fremua S.A.", "ubicacion":"La paz", "tipo":"C"},
             {"nombre":"Saavedra S.R.L.", "ubicacion":"Belgrano", "tipo":"B"},
             {"nombre":"Fernandez S.A.", "ubicacion":"San Bernardo", "tipo":"A"},
@@ -16,7 +15,6 @@
 "productos": [
     {
     "vinoTinto":[{"nombre":"Rutini Vin Doux Naturel", "precio":"1400", "stock":70},
-                {"nombre":"Rutini Vin Doux Naturel", "precio":"1400", "stock":70},
                 {"nombre":"Norton Rosado Malbec", "precio":"1600", "stock":50},
                 {"nombre":"Dada 7 Finca Las Moras", "precio":"1700", "stock":40},
                 {"nombre":"Lambrusco Rosso Amabile", "precio":"1900", "stock":54},

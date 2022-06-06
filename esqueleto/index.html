@@ -19,8 +19,11 @@
             <div class='buscador'>
                 <h3>¿Que estas buscando?</h3>
                 <div class='contenedorBuscador'>
-                    <input type='text' id='buscador' placeholder='Buscar'>
-                    <button id='btnBuscador'>🔍</button>
+                    <input type='search' id='buscador' placeholder='Buscar' spellcheck="false" autocomplete='off' aria-autocomplete="list">
+                    <a id='linkBuscador'><button id='btnBuscador'>🔍</button></a>
+                    <div>
+                        <ul id='dropDown'></ul>
+                    </div>
                 </div>
             </div>
             <div class='planilla'>
@@ -37,19 +40,19 @@
                     <div>
                         <div>
                             <label for='clientesN'>Nombre</label>
-                            <input type='text' id='clientesN' placeholder='Agregar nombre' required>
+                            <input autocomplete='off' type='text' id='clientesN' placeholder='Agregar nombre' required>
                         </div>
                         <div>
                             <label for='clientesA'>Apellido</label>
-                            <input type='text' id='clientesA' placeholder='Agregar apellido' required>
+                            <input autocomplete='off' type='text' id='clientesA' placeholder='Agregar apellido' required>
                         </div>
                         <div>
                             <label for='clientesF'>Frecuencia</label>
-                            <input type='text' id='clientesF' placeholder='Agregar frecuencia' required>
+                            <input autocomplete='off' type='text' id='clientesF' placeholder='Agregar frecuencia' required>
                         </div>
                         <div>
                             <label for='clientesP'>Preferencia</label>
-                            <input type='text' id='clientesP' placeholder='Agregar preferencia' required>
+                            <input autocomplete='off' type='text' id='clientesP' placeholder='Agregar preferencia' required>
                         </div>
                         <button type='submit' class='btn' id='btnClientes'>Agregar</button>
                     </div>
@@ -68,22 +71,47 @@
                     <div>
                         <div>
                             <label for='proveedoresN'>Nombre</label>
-                            <input type='text' id='proveedoresN' class='proveedores' placeholder='Agregar nombre' required>
+                            <input autocomplete='off' type='text' id='proveedoresN' class='proveedores' placeholder='Agregar nombre' required>
                         </div>
                         <div>
                             <label for='proveedoresU'>Ubicación</label>
-                            <input type='text' id='proveedoresU' class='proveedores' placeholder='Agregar ubicación' required>
+                            <input autocomplete='off' type='text' id='proveedoresU' class='proveedores' placeholder='Agregar ubicación' required>
                         </div>
                         <div>
                             <label for='proveedoresT'>Tipo</label>
-                            <input type='text' id='proveedoresT' class='proveedores' placeholder='Agregar tipo' required>
+                            <input autocomplete='off' type='text' id='proveedoresT' class='proveedores' placeholder='Agregar tipo' required>
                         </div>
                         <button type='submit' class='btn' id='btnProveedores'>Agregar</button>
                     </div>
                 </form>
             </div>
             <div class='planilla'>
-                <h2>Administración de productos</h2>
+                <h2 id="productos">Administración de productos</h2>
+                <h3>Vinos Tintos</h3>
+                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosT' class='tabla'>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                    </tr>
+                </table>
+                <form action='' class='formulario' id='formularioProductosT'>
+                    <div>
+                        <div>
+                            <label for='productosNT'>Nombre</label>
+                            <input autocomplete='off' type='text' id='productosNT' class='productosN' placeholder='Agregar nombre' required>
+                        </div>
+                        <div>
+                            <label for='productosPT'>Precio</label>
+                            <input autocomplete='off' type='text' id='productosPT' class='productosP' placeholder='Agregar precio' required>
+                        </div>
+                        <div>
+                            <label for='productosST'>Stock</label>
+                            <input autocomplete='off' type='text' id='productosST' class='productosS' placeholder='Agregar stock' required>
+                        </div>
+                        <button type='submit' class='btn' id='btnProductosT'>Agregar</button>
+                    </div>
+                </form>
                 <h3>Vinos Blancos</h3>
                 <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosB' class='tabla'>
                     <tr>
@@ -96,15 +124,15 @@
                     <div>
                         <div>
                             <label for='productosNB'>Nombre</label>
-                            <input type='text' id='productosNB' class='productosN' placeholder='Agregar nombre' required>
+                            <input autocomplete='off' type='text' id='productosNB' class='productosN' placeholder='Agregar nombre' required>
                         </div>
                         <div>
                             <label for='productosPB'>Precio</label>
-                            <input type='text' id='productosPB' class='productosP' placeholder='Agregar precio' required>
+                            <input autocomplete='off' type='text' id='productosPB' class='productosP' placeholder='Agregar precio' required>
                         </div>
                         <div>
                             <label for='productosSB'>Stock</label>
-                            <input type='text' id='productosSB' class='productosS' placeholder='Agregar stock' required>
+                            <input autocomplete='off' type='text' id='productosSB' class='productosS' placeholder='Agregar stock' required>
                         </div>
                         <button type='submit' class='btn' id='btnProductosB'>Agregar</button>
                     </div>
@@ -121,47 +149,22 @@
                     <div>
                         <div>
                             <label for='productosNE'>Nombre</label>
-                            <input type='text' id='productosNE' class='productosN' class='productosE' placeholder='Agregar nombre' required>
+                            <input autocomplete='off' type='text' id='productosNE' class='productosN' class='productosE' placeholder='Agregar nombre' required>
                         </div>
                         <div>
                             <label for='productosPE'>Precio</label>
-                            <input type='text' id='productosPE' class='productosP' class='productosE' placeholder='Agregar precio' required>
+                            <input autocomplete='off' type='text' id='productosPE' class='productosP' class='productosE' placeholder='Agregar precio' required>
                         </div>
                         <div>
                             <label for='productosSE'>Stock</label>
-                            <input type='text' id='productosSE' class='productosS' class='productosE' placeholder='Agregar stock' required>
+                            <input autocomplete='off' type='text' id='productosSE' class='productosS' class='productosE' placeholder='Agregar stock' required>
                         </div>
                         <button type='submit' class='btn' id='btnProductosE'>Agregar</button>
                     </div>
                 </form>
-                <h3>Vinos Tintos</h3>
-                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosT' class='tabla'>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                    </tr>
-                </table>
-                <form action='' class='formulario' id='formularioProductosT'>
-                    <div>
-                        <div>
-                            <label for='productosNT'>Nombre</label>
-                            <input type='text' id='productosNT' class='productosN' placeholder='Agregar nombre' required>
-                        </div>
-                        <div>
-                            <label for='productosPT'>Precio</label>
-                            <input type='text' id='productosPT' class='productosP' placeholder='Agregar precio' required>
-                        </div>
-                        <div>
-                            <label for='productosST'>Stock</label>
-                            <input type='text' id='productosST' class='productosS' placeholder='Agregar stock' required>
-                        </div>
-                        <button type='submit' class='btn' id='btnProductosT'>Agregar</button>
-                    </div>
-                </form>
             </div>
         </div>
-        <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/toastify-js'></script>
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <script src='../logica/app.js'></script>
     </body>
 </html>

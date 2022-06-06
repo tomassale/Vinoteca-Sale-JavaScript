@@ -19,7 +19,7 @@
   text-decoration: underline black;
 }
 .planillas .buscador .contenedorBuscador input {
-  height: 35px;
+  height: 37px;
   width: 300px;
   margin-top: 24px;
   text-align: center;
@@ -27,13 +27,33 @@
   border: black solid 1px;
   background-color: antiquewhite;
 }
-.planillas .buscador .contenedorBuscador button {
+.planillas .buscador .contenedorBuscador #btnBuscador {
   height: 37px;
   width: 50px;
   margin-top: 29px;
   font-size: 25px;
   border: black solid 1px;
   background-color: antiquewhite;
+  cursor: pointer;
+}
+.planillas .buscador .contenedorBuscador #dropDown {
+  margin: auto;
+  display: block;
+  height: min-content;
+  width: min-content;
+  margin-top: -7.5px;
+  margin-right: 24.8cm;
+  border: black solid 1px;
+  text-align: center;
+}
+.planillas .buscador .contenedorBuscador #dropDown .itemDropDown {
+  display: block;
+  background-color: antiquewhite;
+  height: 37px;
+  width: 300px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
 }
 .planillas .planilla {
   margin-top: 70px;
@@ -61,6 +81,13 @@
 .planillas .planilla table td {
   background-color: blanchedalmond;
 }
+.planillas .planilla table .eliminar {
+  background-color: blanchedalmond;
+  color: #a5953d;
+  border: none;
+  font-size: 25px;
+  cursor: pointer;
+}
 .planillas .planilla .formulario {
   display: flex;
   flex-direction: column;
@@ -86,6 +113,7 @@
   margin-top: 15px;
   background-color: blanchedalmond;
   font-size: 18px;
+  cursor: pointer;
 }
 
 /*# sourceMappingURL=style.css.map */
