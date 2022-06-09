@@ -53,15 +53,7 @@ const toastify = (mensaje) => {
     }).showToast();
 }
 
-//creador de array en localStorage
-const crearLS = (valor, _array) => {
-    if(localStorage.getItem(valor)){
-        _array = JSON.parse(localStorage.getItem(valor))
-    }else{
-        localStorage.setItem(valor, JSON.stringify(_array))
-    }
-}
-
+//funciones buscador
 const buscarProductos = () =>{
     let input = document.querySelector('#buscador')
     let link = document.querySelector('#linkBuscador')
@@ -81,7 +73,6 @@ const buscarProductos = () =>{
         break
     }
 }
-//funcion buscadora
 const buscar = () => {
     let input = document.querySelector('#buscador')
     let link = document.querySelector('#linkBuscador')
@@ -94,14 +85,14 @@ const buscar = () => {
     }
     document.querySelector('#buscador').value = ''
 }
-
 const esconderDropDown = () => {
-    document.querySelector('.itemDropDown').addEventListener('click', (e) => {
-        document.querySelector('#buscador').value = e.target.innerHTML
-        document.querySelector('#dropDown').innerHTML = ''
+    document.querySelectorAll('.itemDropDown').forEach(item => {
+        item.addEventListener('click', (e) => {
+            document.querySelector('#buscador').value = e.target.innerHTML
+            document.querySelector('#dropDown').innerHTML = ''
+        })
     })
 }
-
 const autocompletado = () => {
     document.querySelector("#dropDown").innerHTML = ''
     let pal = document.querySelector('#buscador').value
@@ -123,6 +114,16 @@ const autocompletado = () => {
     esconderDropDown()
 }
 
+//creador de array en localStorage
+const crearLS = (valor, _array) => {
+    if(localStorage.getItem(valor)){
+        _array = JSON.parse(localStorage.getItem(valor))
+    }else{
+        localStorage.setItem(valor, JSON.stringify(_array))
+    }
+}
+
+//creador de lineas en tabla
 const JSONcliente = (item, tabla) => {
     JSON.parse(localStorage.getItem(item)).forEach(cliente => {
         document.querySelector(tabla).innerHTML += `
@@ -161,8 +162,15 @@ const JSONproductos = (item, tabla) => {
     })
 }
 
-//fetchs parar traer APIs o json
+const eliminar = () => {
+    document.querySelectorAll('.eliminar').forEach(e => {
+        e.addEventListener('click', (t) => {
+            t.target.parentElement.parentElement.remove()
+        })
+    })
+}
 
+//fetchs parar traer APIs o json
 fetch('../logica/app.json')
     .then(res => res.json())
     .then(({cliente, proveedor}) => {
@@ -177,7 +185,7 @@ fetch('../logica/app.json')
         crearLS('Cliente', clientes)
         crearLS('Proveedor', proveedores)
     })
-fetch('../logica/app.json')
+fetch('https://mocki.io/v1/31b7c89e-b301-4bfd-8112-6d90e8fc0023')
     .then(res => res.json())
     .then(({productos}) => {
         productos.forEach(object => {
@@ -199,7 +207,6 @@ fetch('../logica/app.json')
         crearLS('Vino Blanco', vinosBlancos)
         crearLS('Vino Espumoso', vinosEspumosos)
     })
-
 //setInterval para actualizar los datos
 setInterval(() => {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat=-34.62264&lon=-58.44104&appid=e77632dc208d5721876cd234a141d90a&lang=es')
@@ -215,10 +222,11 @@ setInterval(() => {
         })
 }, 1000)
 
+//EventListeners
 document.querySelector('#btnBuscador').addEventListener('click', buscar)
 document.querySelector('#buscador').addEventListener('keyup', autocompletado)
 
-//Agregar valores a la tabla de clientes
+//Agregar valores a las tablas
 document.querySelector('#formularioClientes').addEventListener('submit', (e) => {
     e.preventDefault()
     document.querySelector('#tablaClientes').innerHTML += `
@@ -235,39 +243,68 @@ document.querySelector('#formularioClientes').addEventListener('submit', (e) => 
     document.querySelector('#formularioClientes').reset()
     toastify('Cliente')
 })
-//Agregar valores a la tabla de proveedores
 document.querySelector('#formularioProveedores').addEventListener('submit', (e) => {
     e.preventDefault()
+    document.querySelector('#tablaProveedores').innerHTML += `
+    <tr>
+        <td>${proveedoresN.value}</td>
+        <td>${proveedoresU.value}</td>
+        <td>${proveedoresT.value}</td>
+        <td><button class='eliminar'>X</button></td>
+    </tr>
+    `
     proveedores.push(new Proveedores(proveedoresN.value, proveedoresU.value, proveedoresT.value))
     localStorage.setItem('Proveedor', JSON.stringify(proveedores))
     document.querySelector('#formularioProveedores').reset()
     toastify('Proveedor')
 })
-//Agregar valores a la tabla de vinos blancos
-document.querySelector('#formularioProductosB').addEventListener('submit', (e) => {
-    e.preventDefault()
-    vinosBlancos.push(new Productos(productosNB.value, productosPB.value, productosSB.value))
-    localStorage.setItem('Vino Blanco', JSON.stringify(vinosBlancos))
-    document.querySelector('#formularioProductosB').reset()
-    toastify('Producto')
-})
-//Agregar valores a la tabla de vinos espumosos
-document.querySelector('#formularioProductosE').addEventListener('submit', (e) => {
-    e.preventDefault()
-    vinosEspumosos.push(new Productos(productosNE.value, productosPE.value, productosSE.value))
-    localStorage.setItem('Vino Espumoso', JSON.stringify(vinosEspumosos))
-    document.querySelector('#formularioProductosE').reset()
-    toastify('Producto')
-})
-//Agregar valores a la tabla de vinos tintos
 document.querySelector('#formularioProductosT').addEventListener('submit', (e) => {
     e.preventDefault()
+    document.querySelector('#tablaProductosT').innerHTML += `
+    <tr>
+        <td>${productosNT.value}</td>
+        <td>${productosPT.value}</td>
+        <td>${productosST.value}</td>
+        <td><button class='eliminar'>X</button></td>
+    </tr>
+    `
     vinosTintos.push(new Productos(productosNT.value, productosPT.value, productosST.value))
     localStorage.setItem('Vino Tinto', JSON.stringify(vinosTintos));
     reinicio('#formularioProductosT')
     toastify('Producto')
 })
+document.querySelector('#formularioProductosB').addEventListener('submit', (e) => {
+    e.preventDefault()
+    document.querySelector('#tablaProductosB').innerHTML += `
+    <tr>
+        <td>${productosNB.value}</td>
+        <td>${productosPB.value}</td>
+        <td>${productosSB.value}</td>
+        <td><button class='eliminar'>X</button></td>
+    </tr>
+    `
+    vinosBlancos.push(new Productos(productosNB.value, productosPB.value, productosSB.value))
+    localStorage.setItem('Vino Blanco', JSON.stringify(vinosBlancos))
+    document.querySelector('#formularioProductosB').reset()
+    toastify('Producto')
+})
+document.querySelector('#formularioProductosE').addEventListener('submit', (e) => {
+    e.preventDefault()
+    document.querySelector('#tablaProductosE').innerHTML += `
+    <tr>
+        <td>${productosNE.value}</td>
+        <td>${productosPE.value}</td>
+        <td>${productosSE.value}</td>
+        <td><button class='eliminar'>X</button></td>
+    </tr>
+    `
+    vinosEspumosos.push(new Productos(productosNE.value, productosPE.value, productosSE.value))
+    localStorage.setItem('Vino Espumoso', JSON.stringify(vinosEspumosos))
+    document.querySelector('#formularioProductosE').reset()
+    toastify('Producto')
+})
 
+//ejecucion de funciones
 crearLS('Cliente', clientes)
 crearLS('Proveedor', proveedores)
 crearLS('Vino Blanco', vinosBlancos)
@@ -278,3 +315,4 @@ JSONproveedores('Proveedor', '#tablaProveedores')
 JSONproductos('Vino Tinto', '#tablaProductosT')
 JSONproductos('Vino Blanco', '#tablaProductosB')
 JSONproductos('Vino Espumoso', '#tablaProductosE')
+eliminar()

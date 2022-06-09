@@ -28,14 +28,16 @@
             </div>
             <div class='planilla'>
                 <h2>Administración de clientes</h2>
-                <table border='1' cellspacing='8' cellpadding='10' id='tablaClientes' class='tabla'>
-                    <tr class='tr'>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Frecuencia</th>
-                        <th>Preferencia</th>
-                    </tr>
-                </table>
+                <div id='tablaCliente'>
+                    <table border='1' cellspacing='8' cellpadding='10' arialabel='tablaClientes' id='tablaClientes' class='tabla'>
+                        <tr class='tr'>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Frecuencia</th>
+                            <th>Preferencia</th>
+                        </tr>
+                    </table>
+                </div>
                 <form action='' id='formularioClientes' class='formulario' >
                     <div>
                         <div>
@@ -60,7 +62,7 @@
             </div>
             <div class='planilla'>
                 <h2>Administración de proveedores</h2>
-                    <table border='1' cellspacing='8' cellpadding='10' id='tablaProveedores' class='tabla'>
+                    <table border='1' aria-label='tabla Clientes' cellspacing='8' cellpadding='10' id='tablaProveedores' class='tabla'>
                         <tr class='tr'>
                             <th>Nombre</th>
                             <th>Ubicación</th>
@@ -88,7 +90,7 @@
             <div class='planilla'>
                 <h2 id="productos">Administración de productos</h2>
                 <h3>Vinos Tintos</h3>
-                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosT' class='tabla'>
+                <table border='1' cellspacing='8' cellpadding='10' aria-label='tablaVT' id='tablaProductosT' class='tabla'>
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
@@ -113,7 +115,7 @@
                     </div>
                 </form>
                 <h3>Vinos Blancos</h3>
-                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosB' class='tabla'>
+                <table border='1' cellspacing='8' cellpadding='10' aria-label='tablaVB' id='tablaProductosB' class='tabla'>
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
@@ -138,7 +140,7 @@
                     </div>
                 </form>
                 <h3>Vinos Espumosos</h3>
-                <table border='1' cellspacing='8' cellpadding='10' id='tablaProductosE' class='tabla'>
+                <table border='1' cellspacing='8' cellpadding='10' aria-label='tablaVE' id='tablaProductosE' class='tabla'>
                     <tr>
                         <th>Nombre</th>
                         <th>Precio</th>
