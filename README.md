@@ -30,7 +30,7 @@ Vinoteca La Casona Wine es el lugar donde desde hace más de 20 años la pasión
 ```
 > cd 30345--Sale
 ```
-4.Iniciar
+4. Iniciar
 ```
 Open with live server
 ```
